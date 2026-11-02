@@ -66,16 +66,16 @@
   <header>
     <p class="kicker">Minecraft 1.21.11 · Fabric · client</p>
     <h1>AntiTrap</h1>
-    <p>Подсветка ловушечных блоков в сфере <strong>50 блоков</strong> вокруг игрока. Клавиша <kbd>R</kbd> полностью гасит мод: сканер, контуры и GPU-меш.</p>
+    <p>Подсветка ловушечных блоков в сфере <strong>192 блоков</strong> вокруг игрока. Клавиша <kbd>R</kbd> полностью гасит мод: сканер, контуры и GPU-меш.</p>
   </header>
   <main>
     <section>
       <h2>Как работает сканер</h2>
       <ul>
-        <li>Сфера вокруг игрока, радиус по умолчанию 50 (8–64 в настройках).</li>
+        <li>Сфера вокруг игрока, радиус по умолчанию 192 (16–256 в настройках).</li>
         <li>Сначала block entities: таблички, капельники, раздатчики, сундуки, шалкеры, спавнеры.</li>
         <li>Потом секции чанка с <code>maybeHas</code> — воздух и камень не обходятся.</li>
-        <li>Обновление раз в 8 тиков или после сдвига на 2 блока.</li>
+        <li>Обновление раз в 10 тиков или после сдвига на 2 блока.</li>
         <li>Кучные капельники (рядом ≤ 6) поднимают уровень угрозы.</li>
       </ul>
     </section>
@@ -110,7 +110,7 @@
         <tr><td>Настройки</td><td><code>/antitrap menu</code></td></tr>
         <tr><td>Тоггл командой</td><td><code>/antitrap</code></td></tr>
       </table>
-      <p><code>/antitrap radius 50</code> — радиус сферы.<br>
+      <p><code>/antitrap radius 192</code> — радиус сферы.<br>
          <code>/antitrap category hazards off</code> — выключить категорию.<br>
          <code>/antitrap on</code> / <code>/antitrap off</code> — то же, что клавиша R.</p>
     </section>
@@ -121,7 +121,7 @@
     </section>
     <section>
       <h2>Сборка и установка</h2>
-      <p>JDK 21, затем <code>./gradlew build</code>. Готовый файл: <code>build/libs/antitrap-1.0.0.jar</code>.</p>
+      <p>JDK 21, затем <code>./gradlew build</code>. Готовый файл: <code>build/libs/antitraps-1.0.2.jar</code>.</p>
       <p>Положите его в <code>.minecraft/mods</code> вместе с Fabric API для 1.21.11. Нужен Fabric Loader 0.18.1+.</p>
     </section>
   </main>

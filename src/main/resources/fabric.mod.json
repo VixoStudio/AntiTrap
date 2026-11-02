@@ -8,8 +8,8 @@
 		"AntiTraps"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/"
+		"homepage": "https://github.com/vithorixscom-debug/AntiTrap",
+		"sources": "https://github.com/vithorixscom-debug/AntiTrap"
 	},
 	"license": "CC0-1.0",
 	"icon": "assets/antitraps/icon.png",

@@ -1,6 +1,6 @@
 # AntiTrap
 
-Клиентский Fabric-мод для **Minecraft 1.21.11**. Подсвечивает ловушечные блоки в сфере вокруг игрока (по умолчанию **50** блоков).
+Клиентский Fabric-мод для **Minecraft 1.21.11**. Подсвечивает ловушечные блоки в сфере вокруг игрока (по умолчанию **192** блока, диапазон 16–256).
 
 Одна клавиша **R** полностью включает и выключает мод: сканер, контуры и GPU-меш гасятся вместе. Настройки — `/antitrap menu`.
 
@@ -42,7 +42,7 @@
 /antitrap off
 /antitrap menu
 /antitrap reload
-/antitrap radius 50
+/antitrap radius 192
 /antitrap category tripwire off
 ```
 
@@ -55,7 +55,7 @@
 Пример: [`config/antitrap.example.json`](config/antitrap.example.json).
 
 - `enabled` — полное вкл/выкл
-- `scanRadius` — сфера 8–64, по умолчанию **50**
+- `scanRadius` — сфера 16–256, по умолчанию **192**
 - `outlineIntensity` — прозрачность контура (0.2–1.0)
 - `colorLow` / `colorMedium` / `colorHigh` — HEX
 - `categories` — вкл/выкл типов
@@ -92,15 +92,14 @@ dev.antitrap
 ├── AntiTrapMod              клиентский вход, setEnabled()
 ├── config                   JSON + экран настроек
 ├── detect                   категории и реестр блоков
-├── scan                     сфера 50 + BE + palette skip
+├── scan                     сфера 192 + BE + palette skip
 ├── render                   GPU-меш, camera через modelOffset
 ├── input                    одна клавиша R
 └── command                  /antitrap, /antitrap menu
 ```
 
-Сканер: сначала block entities (таблички, капельники, сундуки), затем секции чанка с `maybeHas` — воздух/камень не обходятся. Полное обновление раз в 8 тиков или после сдвига на 2 блока. Контур пересобирается только когда меняется набор блоков, не каждый кадр.
+Сканер: сначала block entities (таблички, капельники, сундуки), затем секции чанка с `maybeHas` — воздух/камень не обходятся. Полное обновление раз в 10 тиков или после сдвига на 2 блока. Контур пересобирается только когда меняется набор блоков, не каждый кадр.
 
 ## Документация HTML
 
-- `html/AntiTrap/index.html`
-- копия: `Desktop/html/AntiTrap/index.html`
+- `index.html` в корне репозитория.
