@@ -1,0 +1,34 @@
+{
+	"schemaVersion": 1,
+	"id": "antitraps",
+	"version": "${version}",
+	"name": "AntiTraps",
+	"description": "Shows trap blocks around you. Press R to turn it on or off. Press K to open settings.",
+	"authors": [
+		"AntiTraps"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/antitraps/icon.png",
+	"environment": "client",
+	"entrypoints": {
+		"client": [
+			"dev.antitrap.AntiTrapMod"
+		],
+		"modmenu": [
+			"dev.antitrap.config.AntiTrapModMenu"
+		]
+	},
+	"depends": {
+		"fabricloader": ">=0.18.1",
+		"minecraft": "~1.21.11",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"modmenu": "*"
+	}
+}

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AntiTrap — справка и настройки</title>
+  <style>
+    :root {
+      --bg: #14120f;
+      --paper: #ece6d8;
+      --ink: #1b1814;
+      --muted: #6b645a;
+      --green: #3f7a4a;
+      --yellow: #b8891c;
+      --red: #b33a32;
+      --line: #d7cfc0;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font: 16px/1.55 "IBM Plex Sans", "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--paper);
+    }
+    header {
+      padding: 48px 24px 32px;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    header p.kicker {
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 12px;
+      color: #b7ae9e;
+      margin: 0 0 12px;
+    }
+    h1 { font: 700 42px/1.1 "Fraunces", Georgia, serif; margin: 0 0 12px; }
+    main { max-width: 760px; margin: 0 auto; padding: 0 24px 80px; }
+    section {
+      background: var(--paper);
+      color: var(--ink);
+      border-radius: 8px;
+      padding: 28px 28px 8px;
+      margin-bottom: 20px;
+    }
+    h2 { font: 600 22px/1.2 "Fraunces", Georgia, serif; margin: 0 0 12px; }
+    p, li { color: #2a2621; }
+    code, kbd {
+      font-family: "IBM Plex Mono", Consolas, monospace;
+      font-size: 0.92em;
+      background: #e3dccc;
+      padding: 0 5px;
+      border-radius: 3px;
+    }
+    table { width: 100%; border-collapse: collapse; margin: 0 0 20px; }
+    th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); font-size: 14px; }
+    .levels { display: grid; grid-template-columns: 1fr; gap: 8px; margin: 0 0 20px; }
+    .lvl { padding: 10px 12px; border-radius: 6px; }
+    .low { background: #dce8d8; }
+    .mid { background: #f3e6c4; }
+    .high { background: #f3d4d0; }
+    footer { max-width: 760px; margin: 0 auto; padding: 0 24px 48px; color: #9c9486; font-size: 13px; }
+  </style>
+</head>
+<body>
+  <header>
+    <p class="kicker">Minecraft 1.21.11 · Fabric · client</p>
+    <h1>AntiTrap</h1>
+    <p>Подсветка ловушечных блоков в сфере <strong>50 блоков</strong> вокруг игрока. Клавиша <kbd>R</kbd> полностью гасит мод: сканер, контуры и GPU-меш.</p>
+  </header>
+  <main>
+    <section>
+      <h2>Как работает сканер</h2>
+      <ul>
+        <li>Сфера вокруг игрока, радиус по умолчанию 50 (8–64 в настройках).</li>
+        <li>Сначала block entities: таблички, капельники, раздатчики, сундуки, шалкеры, спавнеры.</li>
+        <li>Потом секции чанка с <code>maybeHas</code> — воздух и камень не обходятся.</li>
+        <li>Обновление раз в 8 тиков или после сдвига на 2 блока.</li>
+        <li>Кучные капельники (рядом ≤ 6) поднимают уровень угрозы.</li>
+      </ul>
+    </section>
+    <section>
+      <h2>Что подсвечивается</h2>
+      <table>
+        <tr><th>Категория</th><th>Блоки</th></tr>
+        <tr><td>tripwire</td><td>нить, крючок</td></tr>
+        <tr><td>signs</td><td>все таблички</td></tr>
+        <tr><td>doors / trapdoors</td><td>двери, калитки, люки</td></tr>
+        <tr><td>dispensers</td><td>раздатчик, капельник, crafter</td></tr>
+        <tr><td>pistons</td><td>поршни и голова</td></tr>
+        <tr><td>redstone</td><td>рычаг, факел, блок/лампа, copper bulb, громоотвод, TNT, пластины, кнопки, скалк</td></tr>
+        <tr><td>containers</td><td>сундуки, бочка, шалкер, спавнер</td></tr>
+        <tr><td>hazards</td><td>паутина, магма, soul sand, огонь, костры, сталактит, ягоды, infested</td></tr>
+      </table>
+      <p>Лава, вода, ковры и кактусы не подсвечиваются — слишком шумно.</p>
+    </section>
+    <section>
+      <h2>Уровни</h2>
+      <div class="levels">
+        <div class="lvl low"><strong>Низкий.</strong> Ловушечный блок в радиусе.</div>
+        <div class="lvl mid"><strong>Средний.</strong> На линии шага или кластер капельников.</div>
+        <div class="lvl high"><strong>Высокий.</strong> Нить/редстоун на пути, поршень/раздатчик в лицо, 4+ капельника.</div>
+      </div>
+    </section>
+    <section>
+      <h2>Клавиши и команды</h2>
+      <table>
+        <tr><th>Действие</th><th>По умолчанию</th></tr>
+        <tr><td>Полное вкл / выкл</td><td><kbd>R</kbd></td></tr>
+        <tr><td>Настройки</td><td><code>/antitrap menu</code></td></tr>
+        <tr><td>Тоггл командой</td><td><code>/antitrap</code></td></tr>
+      </table>
+      <p><code>/antitrap radius 50</code> — радиус сферы.<br>
+         <code>/antitrap category hazards off</code> — выключить категорию.<br>
+         <code>/antitrap on</code> / <code>/antitrap off</code> — то же, что клавиша R.</p>
+    </section>
+    <section>
+      <h2>Файл настроек</h2>
+      <p>После первого запуска: <code>config/antitrap.json</code></p>
+      <p>Цвета outline: <code>colorLow</code>, <code>colorMedium</code>, <code>colorHigh</code>. Интенсивность — <code>outlineIntensity</code> от 0.2 до 1.0.</p>
+    </section>
+    <section>
+      <h2>Сборка и установка</h2>
+      <p>JDK 21, затем <code>./gradlew build</code>. Готовый файл: <code>build/libs/antitrap-1.0.0.jar</code>.</p>
+      <p>Положите его в <code>.minecraft/mods</code> вместе с Fabric API для 1.21.11. Нужен Fabric Loader 0.18.1+.</p>
+    </section>
+  </main>
+  <footer>AntiTrap · клиентский мод · клавиша R полностью выключает подсветку.</footer>
+</body>
+</html>

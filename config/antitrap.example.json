@@ -1,0 +1,22 @@
+{
+  "enabled": true,
+  "trapPlus": false,
+  "scanRadius": 192,
+  "analysisDepth": 3,
+  "configVersion": 4,
+  "outlineIntensity": 0.85,
+  "colorLow": "#7CFFB2",
+  "colorMedium": "#FFC44D",
+  "colorHigh": "#FF5A6A",
+  "categories": {
+    "tripwire": true,
+    "signs": true,
+    "doors": true,
+    "trapdoors": true,
+    "dispensers": true,
+    "pistons": true,
+    "redstone": true,
+    "containers": true,
+    "hazards": true
+  }
+}
